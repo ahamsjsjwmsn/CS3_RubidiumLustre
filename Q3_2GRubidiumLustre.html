@@ -3,96 +3,265 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Club / Organization Application</title>
+  <title>Club Sign-up Form</title>
+
   <style>
-    body{font-family:Arial,sans-serif;margin:20px}
-    form{max-width:700px}
-    fieldset{margin-bottom:12px;padding:12px}
-    label{display:block;margin:8px 0}
-    input,select,textarea{width:100%;box-sizing:border-box;padding:6px;border:1px solid #888}
-    input:focus,select:focus,textarea:focus{outline:2px solid #333}
-    .missing{border:2px solid #c00}
-    .inline{display:inline-block;margin-right:12px;width:auto}
-    .actions{margin-top:10px}
+    body{
+      font-family:"Poppins","Segoe UI",Arial,sans-serif;
+      background:linear-gradient(135deg,#e0f2fe,#f0fdfa);
+      padding:30px;
+      margin:0;
+    }
+
+    form{
+      max-width:720px;
+      margin:auto;
+      background:#ffffff;
+      padding:24px;
+      border-radius:16px;
+      box-shadow:0 10px 26px rgba(0,0,0,0.12);
+      border-top:8px solid #fca5a5;
+    }
+
+    h2{
+      text-align:center;
+      margin-bottom:16px;
+      color:#0f172a;
+      font-weight:800;
+    }
+
+    fieldset{
+      margin-bottom:16px;
+      padding:16px;
+      border-radius:12px;
+      border:2px solid #bae6fd;
+      background:#f8fafc;
+    }
+
+    legend{
+      font-weight:700;
+      padding:0 8px;
+      color:#0369a1;
+    }
+
+    label{
+      display:block;
+      margin:12px 0;
+      color:#0f172a;
+      font-weight:600;
+    }
+
+    input,select,textarea{
+      width:100%;
+      box-sizing:border-box;
+      padding:10px;
+      border:2px solid #38bdf8;
+      border-radius:10px;
+      font-size:0.95em;
+    }
+
+    textarea{ resize:vertical }
+
+    input:focus,select:focus,textarea:focus{
+      outline:none;
+      border-color:#22c55e;
+      box-shadow:0 0 0 2px rgba(34,197,94,0.25);
+    }
+
+    .inline{
+      display:inline-block;
+      margin-right:16px;
+      width:auto;
+      font-weight:500;
+    }
+
+    .missing{
+      border:2px solid #f87171;
+      background:#fff1f2;
+    }
+
+    .actions{
+      margin-top:18px;
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      padding:10px 18px;
+      border:none;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    button[type="submit"]{
+      background:#22c55e;
+      color:#ffffff;
+    }
+
+    button[type="submit"]:hover{
+      background:#16a34a;
+    }
+
+    button[type="reset"]{
+      background:#e5e7eb;
+      color:#374151;
+    }
+
+    button[type="button"]{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    button[type="button"]:hover{
+      background:#0ea5e9;
+      color:#ffffff;
+    }
   </style>
 </head>
+
 <body>
-  <form id="appForm" method="post" action="submit">
-    <fieldset>
-      <legend>Information 1-4</legend>
 
-      <label>Student ID
-        <input type="number" name="studentId" id="studentId" required>
-      </label>
+<form id="appForm" method="post">
+  <h2>Club Sign-Up Form</h2>
 
-      <label>Full Name
-        <input type="text" name="fullName" id="fullName" required onblur="markIfBlank(this)">
-      </label>
+  <fieldset>
+    <legend>Information 1–4</legend>
 
-      <label>Birthday
-        <input type="date" name="birthday" id="birthday" required>
-      </label>
-
-      <label>Email Address
-        <input type="email" name="email" id="email" required>
-      </label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Information 5-8</legend>
-
-      <label>Mobile Phone
-        <input type="text" name="mobile" id="mobile" required onblur="markIfBlank(this)">
-      </label>
-
-      <label>Grade Level
-        <select name="gradeLevel" id="gradeLevel" required>
-          <option value="" disabled selected>Select</option>
-          <option value="G07">Grade 7</option>
-          <option value="G08">Grade 8</option>
-          <option value="G09">Grade 9</option>
-          <option value="G10">Grade 10</option>
-          <option value="G11">Grade 11</option>
-          <option value="G12">Grade 12</option>
-        </select>
-      </label>
-Forwarded
-<label>Intern / Extern</label>
-      <label class="inline"><input type="radio" name="roleType" value="INT" required> Intern</label>
-      <label class="inline"><input type="radio" name="roleType" value="EXT" required> Extern</label>
-
-      <label>Preferred Organization / Club
-        <select name="club" id="club" required>
-          <option value="" disabled selected>Select</option>
-          <option value="CLB_STEM">STEM Society</option>
-          <option value="CLB_ARTS">Arts Guild</option>
-          <option value="CLB_DEB">Debate Club</option>
-          <option value="CLB_VOL">Volunteer Corps</option>
-          <option value="CLB_CODE">Coding Circle</option>
-        </select>
-      </label>
-    </fieldset>
-
-    <label>Why do you want to join
-      <textarea name="reason" id="reason" required onblur="markIfBlank(this)"></textarea>
+    <label>Student ID
+      <input type="number" name="studentId" required>
     </label>
 
-    <div class="actions">
-      <button type="submit">Submit</button>
-      <button type="reset">Reset</button>
-    </div>
-  </form>
+    <label>Full Name
+      <input type="text" name="fullName" required>
+    </label>
 
-  <script>
-    const form=document.getElementById("appForm");
-    form.onsubmit=function(){return confirm("Submit this application?")};
-    form.onreset=function(){const ok=confirm("Reset the form and clear all inputs?");if(ok){setTimeout(()=>{document.querySelectorAll(".missing").forEach(e=>e.classList.remove("missing"))},0)}return ok};
+    <label>Birthday
+      <input type="date" name="birthday" required>
+    </label>
 
-    function markIfBlank(el){
-      const blank=!el.value||el.value.trim()==="";
-      if(blank) el.classList.add("missing");
-      else el.classList.remove("missing");
+    <label>Email Address
+      <input type="email" name="email" required>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Information 5–8</legend>
+
+    <label>Mobile Phone
+      <input type="text" name="mobile" required>
+    </label>
+
+    <label>Grade Level
+      <select name="gradeLevel" required>
+        <option value="">Select</option>
+        <option value="G07">Grade 7</option>
+        <option value="G08">Grade 8</option>
+        <option value="G09">Grade 9</option>
+        <option value="G10">Grade 10</option>
+        <option value="G11">Grade 11</option>
+        <option value="G12">Grade 12</option>
+      </select>
+    </label>
+
+    <label>Intern / Extern</label>
+    <label class="inline"><input type="radio" name="roleType" value="INT" required> Intern</label>
+    <label class="inline"><input type="radio" name="roleType" value="EXT" required> Extern</label>
+
+    <label>Preferred Organization / Club
+      <select name="club" required>
+        <option value="">Select</option>
+        <option value="CLUB_SCI">Science Club</option>
+        <option value="CLUB_ARTS">Artistic Peeps</option>
+        <option value="CLUB_HUM">Humanities Club</option>
+        <option value="CLUB_SPO">Sports Team</option>
+        <option value="CLUB_SOC">Social Service Club</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <label>Why do you want to join
+    <textarea name="reason" required></textarea>
+  </label>
+
+  <div class="actions">
+    <button type="submit">Submit</button>
+    <button type="button" id="viewBtn">View Signups</button>
+    <button type="reset">Reset</button>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("appForm");
+  const viewBtn = document.getElementById("viewBtn");
+  const STORAGE_KEY = "clubSignUps";
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let valid = true;
+    document.querySelectorAll(".missing").forEach(el => el.classList.remove("missing"));
+
+    form.querySelectorAll("[required]").forEach(field => {
+      if(field.type === "radio"){
+        const group = form.querySelectorAll(`input[name="${field.name}"]`);
+        const checked = [...group].some(r => r.checked);
+        if(!checked){
+          group.forEach(r => r.classList.add("missing"));
+          valid = false;
+        }
+      }else if(!field.value.trim()){
+        field.classList.add("missing");
+        valid = false;
+      }
+    });
+
+    if(!valid){
+      alert("Please fill out all required fields.");
+      return;
     }
-  </script>
+
+    if(!confirm("Submit this application?")) return;
+
+    const fd = new FormData(form);
+    const record = {
+      studentId: fd.get("studentId"),
+      fullName: fd.get("fullName"),
+      birthday: fd.get("birthday"),
+      email: fd.get("email"),
+      mobile: fd.get("mobile"),
+      gradeLevel: fd.get("gradeLevel"),
+      roleType: fd.get("roleType"),
+      club: fd.get("club"),
+      reason: fd.get("reason"),
+      createdAt: new Date().toISOString()
+    };
+
+    let signUps = [];
+    const existing = localStorage.getItem(STORAGE_KEY);
+
+    if(existing){
+      try{
+        signUps = JSON.parse(existing);
+        if(!Array.isArray(signUps)) signUps = [];
+      }catch{
+        signUps = [];
+      }
+    }
+
+    signUps.push(record);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(signUps));
+
+    alert("Application saved successfully!");
+    form.reset();
+  });
+
+  viewBtn.addEventListener("click", () => {
+    window.location.href = "viewSignUps.html";
+  });
+</script>
+
 </body>
 </html>
